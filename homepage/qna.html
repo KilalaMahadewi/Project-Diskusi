@@ -4,7 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QuoRun | QnA</title>
-    <style>
+
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color:rgb(175, 172, 167);
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
 
 /* BLUE BAR===================================================================================*/
 header {
@@ -76,6 +84,101 @@ nav li {
 
 /* BLUE BAR=================================================================================== */
 
+/*Question*/
+
+.ask-question, .questions-list {
+    background: #fff;
+    margin: 20px ;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+.ask-question input {
+    width: 80%;
+    padding: 10px;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+.ask-question button {
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.questions-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.questions-list li {
+    background: #f9f9f9;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+.answer-form {
+    display: flex;
+    margin-top: 10px;
+}
+
+.answer-form input {
+    flex: 1;
+    padding: 10px;
+    margin-right: 10px;
+}
+
+.answer-form button {
+    padding: 10px;
+}
+
+.details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.question {
+    background: #fff;
+    margin: 20px ;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+.details {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.details span {
+    font-size: 15px;
+    color:  #3b5998;
+    margin-right: 30px;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.actions .btn {
+    padding: 5px 10px;
+    background-color: #3b5998;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.actions .btn:hover {
+    background-color: #2d4373;
+}
+
+
     </style>
 </head>
 
@@ -98,6 +201,74 @@ nav li {
             </ul>
         </nav>
     </header>
+
+    <main>
+        <div class="ask-question">
+            <h2>Ask a Question</h2>
+            <input type="text" id="questionInput" placeholder="What's your question?">
+            <button onclick="askQuestion()">Ask</button>
+        </div>
+        <div class="questions-list">
+            <h2>Questions</h2>
+            <ul id="questionsList"></ul>
+        </div>
+        
+        <div class="question">
+            <a style="text-decoration: none;" href="notif1.html"><h2>Why is it so difficult to find a job in Singapore especially if one is not a PR or citizen?</h2></a>
+            <div class="details">
+                <span>Answer</span>
+                <span>Follow</span>
+                <div class="actions">
+                    <button class="btn">Mark as Read</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="question">
+            <a style="text-decoration: none;" href="notif2.html"><h2>Is flexing important? what are the advantages?</h2></a>
+            <div class="details">
+                <span>Answer</span>
+                <span>Follow</span>
+                <div class="actions">
+                    <button class="btn">Mark as Read</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="question">
+            <a style="text-decoration: none;" href="notif4.html"><h2>What are simple attitudes that liked by others?</h2></a>
+            <div class="details">
+                <span>Answer</span>
+                <span>Follow</span>
+                <div class="actions">
+                    <button class="btn">Mark as Read</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="question">
+            <a style="text-decoration: none;" href="notif5.html"><h2>Why we should become a good person?</h2></a>
+            <div class="details">
+                <span>Answer</span>
+                <span>Follow</span>
+                <div class="actions">
+                    <button class="btn">Mark as Read</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="question">
+            <a style="text-decoration: none;" href="notif3.html"><h2>Why lot of teenagers have difficulty finding a job?</h2></a>
+            <div class="details">
+                <span>Answer</span>
+                <span>Follow</span>
+                <div class="actions">
+                    <button class="btn">Mark as Read</button>
+                </di   v>
+            </div>
+        </div>
+
+    </main>
 
     <script>
         function search() {
@@ -126,6 +297,63 @@ nav li {
                 alert('Not Found');
             }
         }
-        </script>
+
+        document.addEventListener('DOMContentLoaded', () => {
+        loadQuestions();
+        });
+
+        function askQuestion() {
+            const questionInput = document.getElementById('questionInput');
+            const questionText = questionInput.value;
+
+            if (questionText.trim() !== "") {
+                let questions = JSON.parse(localStorage.getItem('questions')) || [];
+                questions.push({ text: questionText, answers: [] });
+                localStorage.setItem('questions', JSON.stringify(questions));
+                questionInput.value = '';
+                loadQuestions();
+            } else {
+                alert("Please enter a question.");
+            }
+        }
+
+    function loadQuestions() {
+        const questionsList = document.getElementById('questionsList');
+        questionsList.innerHTML = '';
+
+    let questions = JSON.parse(localStorage.getItem('questions')) || [];
+
+    questions.forEach((question, index) => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+            <div>
+                <strong>${question.text}</strong>
+                <div class="answers">
+                    ${question.answers.map(answer => `<p>${answer}</p>`).join('')}
+                </div>
+                <div class="answer-form">
+                    <input type="text" id="answerInput${index}" placeholder="Your answer">
+                    <button onclick="submitAnswer(${index})">Answer</button>
+                </div>
+            </div>
+        `;
+        questionsList.appendChild(li);
+    });
+    }
+
+    function submitAnswer(index) {
+        const answerInput = document.getElementById(`answerInput${index}`);
+        const answerText = answerInput.value;
+
+    if (answerText.trim() !== "") {
+        let questions = JSON.parse(localStorage.getItem('questions')) || [];
+        questions[index].answers.push(answerText);
+        localStorage.setItem('questions', JSON.stringify(questions));
+        loadQuestions();
+    } else {
+        alert("Please enter an answer.");
+    }
+    }
+    </script>
 </body>
 </html>
