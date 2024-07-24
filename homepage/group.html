@@ -76,6 +76,50 @@ nav li {
 }
 
 /* BLUE BAR=================================================================================== */
+.Group{
+            font-family: 'Times New Roman', Times, serif;
+            margin: 0.5em;
+            font-size: 1em;
+            background-color: #273e70;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        .main {
+            padding: 20px;
+        }
+        .section-title {
+            margin-bottom: 20px;
+        }
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .card {
+            background-color: #333;
+            border-radius: 10px;
+            padding: 10px;
+            width: calc(25% - 20px);
+            text-align: center;
+            
+        }
+        .card img {
+            width: 100%;
+            border-radius: 10px 10px 0 0;
+        }
+        .card h2 {
+            margin: 10px 0;
+        }
+        .card p {
+            margin: 10px 0;
+        }
 
     </style>
 </head>
@@ -125,10 +169,60 @@ nav li {
                 var highlightedElement = document.querySelector('.highlight');
                 highlightedElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
             } else {
-                alert('Not Found');
+                alert('Tidak ada hasil yang ditemukan');
             }
         }
         </script>
+            <div class="Group">
+                <h2>Welcome to Group!</h2>
+                <p>Join Groups to explore your interests on QuoRun</p>
+                <p>Find and create the groups you want</p>
+            </div>
+            <div class="main">
+                <h2 class="section-title">found group</h2>
+                <div class="card-container">
+                    <div class="card">
+                        <img src="FolderFoto/bisnis1.jpeg" alt="">
+                        <h2>Business articles</h2>
+                        <p>Various knowledge about business, etc.</p>
+                    </div>
+                    <div class="card">
+                        <img src="FolderFoto/Edukasi.jpeg" alt="">
+                        <h2>Educational articles</h2>
+                        <p>Just a space where I share content that I find very useful.</p>
+                    </div>
+                    <div class="card">
+                        <img src="FolderFoto/gibah.jpeg" alt="">
+                        <h2>My story</h2>
+                        <p>Outpouring of Hearts on the Twists and Turns of Human Life +62</p>
+                    </div>
+                    <div class="card">
+                        <img src="FolderFoto/sejarah.jpg" alt="">
+                        <h2>History Indonesia</h2>
+                        <p>This space is intended for Quorun colleagues who want to know everything about history.</p>
+                    </div>
+                    <div class="card">
+                        <img src="FolderFoto/sejarah2.jpg" alt="">
+                        <h2>History Indonesia</h2>
+                        <p>delve into the mysteries of human history.</p>
+                    </div>
+                    <div class="card">
+                        <img src="FolderFoto/bisnis3.jpeg" alt="">
+                        <h2>Business online mastery</h2>
+                        <p>Sharing bisnis online, UKM, branding, marketing, selling, funnel, copywriting, content creator.</p>
+                    </div>
+                    <div class="card">
+                        <img src="FolderFoto/gamer.jpeg" alt="">
+                        <h2>Gamer</h2>
+                        <p>Lovers of PC, console and mobile games. Knight, wizard, healer, & protector. Join us!</p>
+                    </div>
+                    <div class="card">
+                        <img src="FolderFoto/mahasiswa.jpeg" alt="">
+                        <h2>Student comments</h2>
+                        <p>Space to share information, problems and solutions, for students.</p>
+                    </div>
+                </div>
+            </div>
 
 </body>
 </html>
